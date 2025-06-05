@@ -25,6 +25,9 @@ class IssueController extends CrudController
         /** @var ContributorRepositoryEloquent $contributorRepository */
         $contributorRepository = app(AppServiceProvider::CONTRIBUTOR_REPOSITORY);
 
+        /** @var \App\Model\Repository\ContributorGroupRepositoryEloquent $groupRepository */
+        $groupRepository = app(AppServiceProvider::CONTRIBUTOR_GROUP_REPOSITORY);
+
         /** @var ProjectRepositoryEloquent $projectRepository */
         $projectRepository = app(AppServiceProvider::PROJECT_REPOSITORY);
 
@@ -41,6 +44,7 @@ class IssueController extends CrudController
             $data,
             [
                 'assigneeList' => $contributorRepository->getItemsForSelect(),
+                'groupsList' => $groupRepository->getItemsForSelect(),
                 'projectsList' => $projectRepository->getItemsForSelect(),
                 'labelList' => $labelRepository->getItemsForSelect(null, null, 'name'),
                 'milestoneList' => $milestoneRepository->getItemsForSelect(null, null, 'id', 'title'),

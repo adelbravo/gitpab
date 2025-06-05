@@ -57,6 +57,15 @@ class SpentRepositoryEloquent extends RepositoryAbstractEloquent
             $query->whereIn('note.author_id', $authorIds);
         }
 
+        if ($groupIds = Arr::get($parameters, 'groups'))
+        {
+            $query->whereIn('note.author_id', function($q) use ($groupIds) {
+                $q->select('contributor_id')
+                    ->from('contributor_group_contributor')
+                    ->whereIn('contributor_group_id', $groupIds);
+            });
+        }
+
         if ($id = Arr::get($parameters, 'id'))
         {
             $query->where('note.id', '=', $id);

@@ -12,6 +12,7 @@
 */
 
 use App\Http\Controllers\ContributorController;
+use App\Http\Controllers\ContributorGroupController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IssueController;
 use App\Http\Controllers\MilestoneController;
@@ -43,6 +44,7 @@ Route::group(['middleware' => ['auth', 'route_permission']], function () {
     Route::resource('note', '\\' . NoteController::class);
     Route::resource('time', '\\' . TimeController::class);
     Route::resource('contributor', '\\' . ContributorController::class);
+    Route::resource('contributor_group', '\\' . ContributorGroupController::class);
     Route::resource('payment', '\\' . PaymentController::class);
     Route::resource('user', '\\' . UserController::class);
 

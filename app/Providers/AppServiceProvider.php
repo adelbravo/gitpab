@@ -20,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
     const GITLAB_SERVICE_NAMESPACE   = 'service.gitlab';
 
     const ELOQUENT_CONTRIBUTOR_SERVICE       = 'service.eloquent.contributor';
+    const ELOQUENT_CONTRIBUTOR_GROUP_SERVICE = 'service.eloquent.contributor_group';
     const ELOQUENT_GROUP_MILESTONE_SERVICE   = 'service.eloquent.group_milestone';
     const ELOQUENT_ISSUE_SERVICE             = 'service.eloquent.issue';
     const ELOQUENT_LABEL_SERVICE             = 'service.eloquent.label';
@@ -41,6 +42,7 @@ class AppServiceProvider extends ServiceProvider
     const UPDATE_SERVICE = 'service.update';
 
     const CONTRIBUTOR_REPOSITORY    = 'repository.contributor';
+    const CONTRIBUTOR_GROUP_REPOSITORY = 'repository.contributor_group';
     const ISSUE_REPOSITORY          = 'repository.issue';
     const LABEL_REPOSITORY          = 'repository.label';
     const MILESTONE_REPOSITORY      = 'repository.milestone';
@@ -72,6 +74,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $repositories = [
             self::CONTRIBUTOR_REPOSITORY    => Repository\ContributorRepositoryEloquent::class,
+            self::CONTRIBUTOR_GROUP_REPOSITORY => Repository\ContributorGroupRepositoryEloquent::class,
             self::ISSUE_REPOSITORY          => Repository\IssueRepositoryEloquent::class,
             self::LABEL_REPOSITORY          => Repository\LabelRepositoryEloquent::class,
             self::MILESTONE_REPOSITORY      => Repository\MilestoneRepositoryEloquent::class,
@@ -90,6 +93,7 @@ class AppServiceProvider extends ServiceProvider
 
         $eloquentServices = [
             self::ELOQUENT_CONTRIBUTOR_SERVICE       => Service\Eloquent\EloquentContributorService::class,
+            self::ELOQUENT_CONTRIBUTOR_GROUP_SERVICE => Service\Eloquent\EloquentContributorGroupService::class,
             self::ELOQUENT_GROUP_MILESTONE_SERVICE   => Service\Eloquent\EloquentMilestoneService::class,
             self::ELOQUENT_ISSUE_SERVICE             => Service\Eloquent\EloquentIssueService::class,
             self::ELOQUENT_LABEL_SERVICE             => Service\Eloquent\EloquentLabelService::class,

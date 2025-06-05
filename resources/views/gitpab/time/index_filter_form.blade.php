@@ -34,6 +34,17 @@
         <div class="col-md-2">
             <div class="form-group">
                 @include('partial.form.element.select', [
+                    'name' => 'groups[]',
+                    'list' => $groupsList,
+                    'selected' => $request->input('groups'),
+                    'options' => ['multiple' => 'multiple'],
+                    'label' => __('messages.Contributor groups'),
+                ])
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                @include('partial.form.element.select', [
                     'name' => 'projects[]',
                     'list' => $projectsList,
                     'selected' => $request->input('projects'),
