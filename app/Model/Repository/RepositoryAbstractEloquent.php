@@ -67,9 +67,13 @@ abstract class RepositoryAbstractEloquent extends BaseRepository
         $this->model->truncate();
     }
 
-    public function count(): int
+    public function count(array $where = [], $columns = '*'): int
     {
-        return $this->model->count();
+        if (!empty($where)) {
+            return $this->model->where($where)->count($columns);
+        }
+
+        return $this->model->count($columns);
     }
 
     public function getPkFieldName()

@@ -44,6 +44,15 @@ class IssueRepositoryEloquent extends RepositoryAbstractEloquent
             $query->whereIn('issue.assignee_id', $assigneeIds);
         }
 
+        if ($groupIds = Arr::get($parameters, 'groups'))
+        {
+            $query->whereIn('issue.assignee_id', function($q) use ($groupIds) {
+                $q->select('contributor_id')
+                    ->from('contributor_group_contributor')
+                    ->whereIn('contributor_group_id', $groupIds);
+            });
+        }
+
         if ($issueIid = Arr::get($parameters, 'issue_iid'))
         {
             $query->where('issue.iid', '=', $issueIid);
